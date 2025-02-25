@@ -1,4 +1,14 @@
 import streamlit as st
+
+import subprocess
+
+try:
+    import langchain_aws
+except ModuleNotFoundError:
+    subprocess.run(["pip", "install", "langchain_aws"])
+    import langchain_aws  # Retry import
+
+
 from langchain_aws import ChatBedrock
 from langchain_core.chat_history import InMemoryChatMessageHistory
 from langchain_core.runnables.history import RunnableWithMessageHistory
